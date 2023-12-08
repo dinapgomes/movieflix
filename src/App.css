@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&family=Roboto&family=Roboto+Slab&family=Ubuntu&display=swap");
+
+* {
+  font-family: "Roboto Slab", serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,19 @@
+.titulo-inicial {
+  display: flex;
+  justify-content: center;
+}
+
+.lista-filmes {
+  display: flex;
+  display: inline-block;
+}
+
+.lista-filmes li {
+  padding: 30px;
+  display: inline-block;
+}
+
+.lista-filmes h2 {
+  display: flex;
+  justify-content: center;
+}
