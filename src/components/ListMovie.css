@@ -1,6 +1,8 @@
 .titulo-inicial {
   display: flex;
   justify-content: center;
+  padding-top: 15px;
+  color: white;
 }
 
 .lista-filmes {
@@ -16,4 +18,8 @@
 .lista-filmes h2 {
   display: flex;
   justify-content: center;
+}
+
+.titulo-filme {
+  color: white;
 }
