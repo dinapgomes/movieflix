@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import "./Details.css";
 
@@ -37,10 +37,6 @@ const Details = () => {
 
   return (
     <div className="detalhar-filme">
-      <Link to={`/`} style={{ textDecoration: "none", color: "black" }}>
-        <button className="button-home">Voltar</button>
-      </Link>
-
       {detailMovie && (
         <>
           <div className="img-info">

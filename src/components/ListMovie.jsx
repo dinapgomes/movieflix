@@ -2,9 +2,37 @@ import { Link } from "react-router-dom";
 import "./ListMovie.css";
 
 export const ListMovie = ({ movies = [] }) => {
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    const monthNames = [
+      "janeiro",
+      "fevereiro",
+      "março",
+      "abril",
+      "maio",
+      "junho",
+      "julho",
+      "agosto",
+      "setembro",
+      "outubro",
+      "novembro",
+      "dezembro",
+    ];
+
+    return `${date.getDate()} ${
+      monthNames[date.getMonth()]
+    } ${date.getFullYear()}`;
+  };
+
   return (
     <div>
-      <h2 className="titulo-inicial">Filmes populares</h2>
+      <div className="filtro-genero">
+        <h2 className="titulo-inicial">
+          Milhões de filmes, séries e pessoas para descobrir. Explore já.
+        </h2>
+        <p>Filtre por:</p>
+      </div>
       <ul className="lista-filmes">
         {movies.map((movie) => (
           <li key={movie.id}>
@@ -17,6 +45,7 @@ export const ListMovie = ({ movies = [] }) => {
                 alt="imagem-filme"
               />
               <h2 className="titulo-filme">{movie.title}</h2>
+              <p className="data-lacamento">{formatDate(movie.release_date)}</p>
             </Link>
           </li>
         ))}

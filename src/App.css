@@ -10,6 +10,5 @@ body,
   height: 100%;
   padding: 0;
   margin: 0;
-  /* background-color: #69587b; */
-  background-color: #2b304d;
+  box-sizing: border-box;
 }
