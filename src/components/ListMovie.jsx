@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./ListMovie.css";
 
-export const ListMovie = ({ movies = [] }) => {
+export const ListMovie = ({ movies = [], genres = [] }) => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
 
@@ -32,6 +32,13 @@ export const ListMovie = ({ movies = [] }) => {
           Milhões de filmes, séries e pessoas para descobrir. Explore já.
         </h2>
         <p>Filtre por:</p>
+        <ul className="lista-genero">
+          {genres.map((genre) => (
+            <li key={genre.id}>
+              <span>{genre.name}</span>
+            </li>
+          ))}
+        </ul>
       </div>
       <ul className="lista-filmes">
         {movies.map((movie) => (
