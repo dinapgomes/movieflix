@@ -1,12 +1,6 @@
 .detalhar-filme {
-  padding: 10px;
-  margin: 10px;
-  color: black;
-}
-
-.img-filme {
-  display: flex;
-  justify-content: center;
+  color: white;
+  background-color: #861040;
 }
 
 .img-info {
@@ -16,6 +10,18 @@
   align-content: stretch;
   flex-wrap: nowrap;
   justify-content: center;
+}
+
+.img-info .avaliacao {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.img-info .avaliacao p {
+  width: 110px;
+  padding: 15px;
 }
 
 .info-filme {
@@ -31,4 +37,8 @@
 
 .info-filme a {
   color: #87b9e9;
+}
+.img-filme {
+  display: flex;
+  justify-content: center;
 }

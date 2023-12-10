@@ -26,12 +26,19 @@
 
 .lista-filmes {
   display: flex;
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .lista-filmes li {
   padding: 30px;
   display: inline-block;
+  width: 300px;
+}
+
+.lista-filmes li img {
+  width: 100%;
 }
 
 .titulo-filme {
