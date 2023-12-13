@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./ListMovie.css";
+import { FiltroGenero, ListaFilmes, ListaGenero, Title } from "./styles";
 
 export const ListMovie = ({ movies = [], genres = [] }) => {
   const formatDate = (dateString) => {
@@ -27,20 +27,20 @@ export const ListMovie = ({ movies = [], genres = [] }) => {
 
   return (
     <div>
-      <div className="filtro-genero">
-        <h2 className="titulo-inicial">
+      <FiltroGenero>
+        <Title>
           Milhões de filmes, séries e pessoas para descobrir. Explore já.
-        </h2>
+        </Title>
         <p>Filtre por:</p>
-        <ul className="lista-genero">
+        <ListaGenero>
           {genres.map((genre) => (
             <li key={genre.id}>
               <span>{genre.name}</span>
             </li>
           ))}
-        </ul>
-      </div>
-      <ul className="lista-filmes">
+        </ListaGenero>
+      </FiltroGenero>
+      <ListaFilmes>
         {movies.map((movie) => (
           <li key={movie.id}>
             <Link
@@ -56,7 +56,7 @@ export const ListMovie = ({ movies = [], genres = [] }) => {
             </Link>
           </li>
         ))}
-      </ul>
+      </ListaFilmes>
     </div>
   );
 };
