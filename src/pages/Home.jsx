@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ListMovie } from "../components/ListMovie";
+import { ListMovie } from "../components/ListMovie/ListMovie";
 
 const urlFilme =
   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";

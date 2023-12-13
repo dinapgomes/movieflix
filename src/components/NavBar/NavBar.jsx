@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { Navbar } from "./styles";
 
 const NavBar = () => {
   return (
-    <div className="navbar">
+    <Navbar>
       <Link to={`/`} style={{ textDecoration: "none", color: "white" }}>
         <h2>MovieFlix</h2>
       </Link>
-    </div>
+    </Navbar>
   );
 };
 
