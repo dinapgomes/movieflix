@@ -42,6 +42,11 @@
   display: flex;
   justify-content: center;
 }
+
+.mais-info {
+  padding: 25px;
+}
+
 .card-div {
   display: flex;
 }

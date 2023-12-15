@@ -122,20 +122,30 @@ const Details = () => {
           </>
         )}
       </div>
-      <div className="card-div">
-        <ul className="card-actor">
-          {actorMovie &&
-            actorMovie.cast
-              .filter((actor) => actor.known_for_department === "Acting")
-              .map((actor) => (
-                <li key={actor.id}>
-                  <Card actor={actor} />
-                </li>
-              ))}
-        </ul>
-      </div>
-      <div>
-        <h2>Trailer</h2>
+      <div className="mais-info">
+        <div className="card-div">
+          <ul className="card-actor">
+            {actorMovie &&
+              actorMovie.cast
+                .filter((actor) => actor.known_for_department === "Acting")
+                .map((actor) => (
+                  <li key={actor.id}>
+                    <Card actor={actor} />
+                  </li>
+                ))}
+          </ul>
+        </div>
+
+        <div className="detail-video">
+          <h2>Trailer</h2>
+          <video width="640" height="360" controls>
+            <source src="seu-video.mp4" type="video/mp4" />
+            Seu navegador não suporta o elemento de vídeo.
+          </video>
+        </div>
+        <div className="detail-recomentacao">
+          <h2>Recomendações</h2>
+        </div>
       </div>
     </div>
   );
