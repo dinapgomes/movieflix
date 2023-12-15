@@ -45,3 +45,9 @@
 .card-div {
   display: flex;
 }
+
+.card-actor {
+  display: flex;
+  overflow-x: auto;
+  list-style: none;
+}

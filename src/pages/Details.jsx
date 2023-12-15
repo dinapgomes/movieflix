@@ -117,28 +117,25 @@ const Details = () => {
                     {detailMovie.homepage}
                   </a>
                 </p>
-                <ul>
-                  {actorMovie &&
-                    actorMovie.cast
-                      .filter(
-                        (actorMovie) =>
-                          actorMovie.known_for_department === "Acting"
-                      )
-                      .map((actorMovie) => (
-                        <li key={actorMovie.id}>
-                          {actorMovie.name} {actorMovie.known_for_department}
-                        </li>
-                      ))}
-                </ul>
               </div>
             </div>
           </>
         )}
       </div>
       <div className="card-div">
-        <Card />
-        <Card />
-        <Card />
+        <ul className="card-actor">
+          {actorMovie &&
+            actorMovie.cast
+              .filter((actor) => actor.known_for_department === "Acting")
+              .map((actor) => (
+                <li key={actor.id}>
+                  <Card actor={actor} />
+                </li>
+              ))}
+        </ul>
+      </div>
+      <div>
+        <h2>Trailer</h2>
       </div>
     </div>
   );
