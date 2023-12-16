@@ -5,6 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 import "./Details.css";
 import Card from "../components/Card/Card";
+import CardRecommendation from "../components/CardRecommendation/CardRecommendation";
 
 const url = "https://api.themoviedb.org/3/movie";
 
@@ -12,6 +13,8 @@ const Details = () => {
   const { id } = useParams();
   const [detailMovie, setDetailMovie] = useState();
   const [actorMovie, setActorMovie] = useState();
+  const [trailer, setTrailer] = useState();
+  const [recommendations, setRecommendations] = useState();
 
   //url details movie
   useEffect(() => {
@@ -66,6 +69,62 @@ const Details = () => {
     }
 
     getActor();
+  }, [id]);
+
+  //url details Trailer
+  useEffect(() => {
+    async function getTailer() {
+      try {
+        // setIsLoading(true);
+        const res = await fetch(`${url}/${id}/videos`, {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
+          },
+        });
+
+        const dataTrailer = await res.json();
+
+        setTrailer(dataTrailer.results);
+        // setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+        // setError("Erro ao carregar os dados");
+        // setIsLoading(false);
+      }
+    }
+
+    getTailer();
+  }, [id]);
+
+  //url details Recomendação
+  useEffect(() => {
+    async function getRecommendations() {
+      try {
+        // setIsLoading(true);
+        const res = await fetch(`${url}/${id}/recommendations`, {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
+          },
+        });
+
+        const dataRecommendations = await res.json();
+
+        setRecommendations(dataRecommendations.results.slice(0, 5));
+        // setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+        // setError("Erro ao carregar os dados");
+        // setIsLoading(false);
+      }
+    }
+
+    getRecommendations();
   }, [id]);
 
   return (
@@ -138,13 +197,20 @@ const Details = () => {
 
         <div className="detail-video">
           <h2>Trailer</h2>
-          <video width="640" height="360" controls>
-            <source src="seu-video.mp4" type="video/mp4" />
-            Seu navegador não suporta o elemento de vídeo.
-          </video>
+          {trailer && (
+            <iframe
+              width="560"
+              height="315"
+              src={`https://www.youtube.com/embed/${trailer[0].key}`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          )}
         </div>
-        <div className="detail-recomentacao">
+        <div className="card-recomendacao">
           <h2>Recomendações</h2>
+          <CardRecommendation recommendations={recommendations} />
         </div>
       </div>
     </div>
