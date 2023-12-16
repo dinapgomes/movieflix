@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FiltroGenero, ListaFilmes, ListaGenero, Title } from "./styles";
 
-export const ListMovie = ({ movies = [], genres = [] }) => {
+export const ListMovie = ({ movies = [], genres = [], onClick = () => {} }) => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
 
@@ -34,7 +34,7 @@ export const ListMovie = ({ movies = [], genres = [] }) => {
         <p>Filtre por:</p>
         <ListaGenero>
           {genres.map((genre) => (
-            <li key={genre.id}>
+            <li key={genre.id} onClick={() => onClick(genre.id)}>
               <span>{genre.name}</span>
             </li>
           ))}

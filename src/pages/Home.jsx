@@ -10,6 +10,7 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedGenres, setSelectedGenres] = useState([]);
   const totalPages = 20;
 
   //Url dos gêneros
@@ -46,19 +47,22 @@ const Home = () => {
 
   useEffect(() => {
     getData();
-  }, [currentPage]);
+  }, [currentPage, selectedGenres]);
 
   const getData = async () => {
     try {
       // setIsLoading(true);
-      const res = await fetch(`${urlFilme}&page=${currentPage}`, {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
-        },
-      });
+      const res = await fetch(
+        `${urlFilme}&page=${currentPage}&genres=${selectedGenres}`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
+          },
+        }
+      );
 
       const data = await res.json();
 
@@ -71,9 +75,16 @@ const Home = () => {
     }
   };
 
+  const onClick = (id) => {
+    if (selectedGenres.includes(id)) {
+      setSelectedGenres(selectedGenres.filter((genre) => genre !== id));
+    } else {
+      setSelectedGenres([...selectedGenres, id]);
+    }
+  };
   return (
     <div>
-      <ListMovie movies={movies} genres={genres} />
+      <ListMovie movies={movies} genres={genres} onClick={onClick} />
       <ResponsivePagination
         current={currentPage}
         total={totalPages}

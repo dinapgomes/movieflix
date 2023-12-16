@@ -30,7 +30,9 @@ export const ListaGenero = styled.ul`
   li {
     margin: 10px;
     padding: 10px;
+    cursor: pointer;
   }
+
   li span {
     padding: 10px;
     background-color: white;
