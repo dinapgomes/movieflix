@@ -18,114 +18,105 @@ const Details = () => {
 
   //url details movie
   useEffect(() => {
-    async function getMovie() {
-      try {
-        // setIsLoading(true);
-        const res = await fetch(`${url}/${id}`, {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
-          },
-        });
-
-        const data = await res.json();
-
-        setDetailMovie(data);
-        // setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
-        // setError("Erro ao carregar os dados");
-        // setIsLoading(false);
-      }
-    }
     getMovie();
-  }, [id]);
-
-  //url details actor
-  useEffect(() => {
-    async function getActor() {
-      try {
-        // setIsLoading(true);
-        const res = await fetch(`${url}/${id}/credits`, {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
-          },
-        });
-
-        const dataActor = await res.json();
-
-        setActorMovie(dataActor);
-        // setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
-        // setError("Erro ao carregar os dados");
-        // setIsLoading(false);
-      }
-    }
-
     getActor();
-  }, [id]);
-
-  //url details Trailer
-  useEffect(() => {
-    async function getTailer() {
-      try {
-        // setIsLoading(true);
-        const res = await fetch(`${url}/${id}/videos`, {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
-          },
-        });
-
-        const dataTrailer = await res.json();
-
-        setTrailer(dataTrailer.results);
-        // setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
-        // setError("Erro ao carregar os dados");
-        // setIsLoading(false);
-      }
-    }
-
     getTailer();
-  }, [id]);
-
-  //url details Recomendação
-  useEffect(() => {
-    async function getRecommendations() {
-      try {
-        // setIsLoading(true);
-        const res = await fetch(`${url}/${id}/recommendations`, {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
-          },
-        });
-
-        const dataRecommendations = await res.json();
-
-        setRecommendations(dataRecommendations.results.slice(0, 5));
-        // setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
-        // setError("Erro ao carregar os dados");
-        // setIsLoading(false);
-      }
-    }
-
     getRecommendations();
   }, [id]);
+
+  const getMovie = async () => {
+    try {
+      // setIsLoading(true);
+      const res = await fetch(`${url}/${id}`, {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
+        },
+      });
+
+      const data = await res.json();
+
+      setDetailMovie(data);
+      // setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+      // setError("Erro ao carregar os dados");
+      // setIsLoading(false);
+    }
+  };
+  //url details actor
+  const getActor = async () => {
+    try {
+      // setIsLoading(true);
+      const res = await fetch(`${url}/${id}/credits`, {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
+        },
+      });
+
+      const dataActor = await res.json();
+
+      setActorMovie(dataActor);
+      // setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+      // setError("Erro ao carregar os dados");
+      // setIsLoading(false);
+    }
+  };
+
+  //url details Trailer
+  const getTailer = async () => {
+    try {
+      // setIsLoading(true);
+      const res = await fetch(`${url}/${id}/videos`, {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
+        },
+      });
+
+      const dataTrailer = await res.json();
+
+      setTrailer(dataTrailer.results);
+      // setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+      // setError("Erro ao carregar os dados");
+      // setIsLoading(false);
+    }
+  };
+
+  //url details Recomendação
+  const getRecommendations = async () => {
+    try {
+      // setIsLoading(true);
+      const res = await fetch(`${url}/${id}/recommendations`, {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTZlYzU2MTUxZDMxY2NkYTkwODgyNWE2MWY1OWY5MiIsInN1YiI6IjY0YTA3NDA0NGE1MmY4MDBjOTk0NmI0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5wk8x7guVIb_Qhk2zgPydKG99VIjgaAV75gufu9zk10",
+        },
+      });
+
+      const dataRecommendations = await res.json();
+
+      setRecommendations(dataRecommendations.results.slice(0, 5));
+      // setIsLoading(false);
+    } catch (error) {
+      console.log(error.message);
+      // setError("Erro ao carregar os dados");
+      // setIsLoading(false);
+    }
+  };
 
   return (
     <div className="details">
