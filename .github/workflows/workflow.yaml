@@ -1,0 +1,30 @@
+name: ESLint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run ESLint
+        run: yarn lint --ext js,jsx --report-unused-disable-directives
+
+      - name: Upload ESLint results
+        uses: actions/upload-artifact@v2
+        with:
+          name: eslint-results
+          path: .eslintcache
