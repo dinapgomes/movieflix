@@ -15,6 +15,7 @@ const Details = () => {
   const [actorMovie, setActorMovie] = useState();
   const [trailer, setTrailer] = useState();
   const [recommendations, setRecommendations] = useState();
+  const [error, setError] = useState(null);
 
   //url details movie
   useEffect(() => {
@@ -26,7 +27,6 @@ const Details = () => {
 
   const getMovie = async () => {
     try {
-      // setIsLoading(true);
       const res = await fetch(`${url}/${id}`, {
         method: "GET",
         headers: {
@@ -39,17 +39,15 @@ const Details = () => {
       const data = await res.json();
 
       setDetailMovie(data);
-      // setIsLoading(false);
     } catch (error) {
       console.log(error.message);
-      // setError("Erro ao carregar os dados");
-      // setIsLoading(false);
+      setError("Erro ao carregar os dados");
     }
   };
   //url details actor
   const getActor = async () => {
     try {
-      // setIsLoading(true);
+
       const res = await fetch(`${url}/${id}/credits`, {
         method: "GET",
         headers: {
@@ -62,18 +60,15 @@ const Details = () => {
       const dataActor = await res.json();
 
       setActorMovie(dataActor);
-      // setIsLoading(false);
     } catch (error) {
       console.log(error.message);
-      // setError("Erro ao carregar os dados");
-      // setIsLoading(false);
+      setError("Erro ao carregar os dados");
     }
   };
 
   //url details Trailer
   const getTailer = async () => {
     try {
-      // setIsLoading(true);
       const res = await fetch(`${url}/${id}/videos`, {
         method: "GET",
         headers: {
@@ -86,18 +81,15 @@ const Details = () => {
       const dataTrailer = await res.json();
 
       setTrailer(dataTrailer.results);
-      // setIsLoading(false);
     } catch (error) {
       console.log(error.message);
-      // setError("Erro ao carregar os dados");
-      // setIsLoading(false);
+      setError("Erro ao carregar os dados");
     }
   };
 
   //url details Recomendação
   const getRecommendations = async () => {
     try {
-      // setIsLoading(true);
       const res = await fetch(`${url}/${id}/recommendations`, {
         method: "GET",
         headers: {
@@ -110,17 +102,16 @@ const Details = () => {
       const dataRecommendations = await res.json();
 
       setRecommendations(dataRecommendations.results.slice(0, 5));
-      // setIsLoading(false);
     } catch (error) {
       console.log(error.message);
-      // setError("Erro ao carregar os dados");
-      // setIsLoading(false);
+      setError("Erro ao carregar os dados");
     }
   };
 
   return (
     <div className="details">
       <div className="detalhar-filme">
+        {error && <p>{error}</p>}
         {detailMovie && (
           <>
             <div className="img-info">
