@@ -113,7 +113,6 @@ const Details = () => {
       <div className="detalhar-filme">
         {error && <p>{error}</p>}
         {detailMovie && (
-          <>
             <div className="img-info">
               <div className="img-filme">
                 <img
@@ -160,7 +159,7 @@ const Details = () => {
                 </p>
               </div>
             </div>
-          </>
+
         )}
       </div>
       <div className="mais-info">
