@@ -19,9 +19,7 @@ const CardRecommendation = ({ recommendations = [] }) => {
       "dezembro",
     ];
 
-    return `${date.getDate()} ${
-      monthNames[date.getMonth()]
-    } ${date.getFullYear()}`;
+    return `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
   };
   return (
     <div>
