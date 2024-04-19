@@ -30,4 +30,4 @@ jobs:
           path: .eslintcache
 
       - name: Run Prettier
-        run: npx prettier . --check
+        run: yarn prettier . --check
