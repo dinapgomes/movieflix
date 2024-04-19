@@ -1,6 +1,7 @@
 # Descrição do projeto
 
-O sistema web MovieFlix tem como objetivo apresentar um lista de filmes, a partir do consumo da API: [The movie DataBase API](https://developer.themoviedb.org/reference/intro/getting-started)
+O sistema web MovieFlix tem como objetivo apresentar um lista de filmes, a partir do consumo da API:
+[The movie DataBase API](https://developer.themoviedb.org/reference/intro/getting-started)
 
 <div align="center">
 

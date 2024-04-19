@@ -20,17 +20,13 @@ export const ListMovie = ({ movies = [], genres = [], onClick = () => {} }) => {
       "dezembro",
     ];
 
-    return `${date.getDate()} ${
-      monthNames[date.getMonth()]
-    } ${date.getFullYear()}`;
+    return `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
   };
 
   return (
     <div>
       <FiltroGenero>
-        <Title>
-          Milhões de filmes, séries e pessoas para descobrir. Explore já.
-        </Title>
+        <Title>Milhões de filmes, séries e pessoas para descobrir. Explore já.</Title>
         <p>Filtre por:</p>
         <ListaGenero>
           {genres.map((genre) => (
@@ -43,14 +39,8 @@ export const ListMovie = ({ movies = [], genres = [], onClick = () => {} }) => {
       <ListaFilmes>
         {movies.map((movie) => (
           <li key={movie.id}>
-            <Link
-              to={`details/${movie.id}`}
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt="imagem-filme"
-              />
+            <Link to={`details/${movie.id}`} style={{ textDecoration: "none", color: "black" }}>
+              <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="imagem-filme" />
               <h2 className="titulo-filme">{movie.title}</h2>
               <p className="data-lacamento">{formatDate(movie.release_date)}</p>
             </Link>
