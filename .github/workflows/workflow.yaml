@@ -28,3 +28,6 @@ jobs:
         with:
           name: eslint-results
           path: .eslintcache
+
+      - name: Run Prettier
+        run: npx prettier . --check
