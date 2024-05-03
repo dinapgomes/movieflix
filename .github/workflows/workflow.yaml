@@ -22,7 +22,7 @@ jobs:
       - name: instalação do jscpd
         run: |
           cd movieflix
-          yarn add -g jscpd
+          yarn global add jscpd
 
       - name: execução do jscpd
         run: |
