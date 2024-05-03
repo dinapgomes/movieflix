@@ -15,6 +15,5 @@ module.exports = {
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     "react/prop-types": "off",
     "no-warning-comments": "off",
-    "no-dupe-keys": "warn" // Adicionando verificação de chaves duplicadas em objetos literais
   },
 };
