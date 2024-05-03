@@ -1,24 +1,31 @@
-name: ESLint
+name: ESLint and JSCPD
 
 on:
   push:
   pull_request:
 
 jobs:
-  eslint:
+  eslint_and_jscpd:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "16" # Atualizado para a versão 16 para garantir compatibilidade com o pacote `vite`
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          yarn install --frozen-lockfile --ignore-engines
+      - name: instalação do jscpd
+        run: |
+          yarn global add jscpd
+
+      - name: execução do jscpd
+        run: |
+          npx jscpd --exitCode 1 .    
 
       - name: Run ESLint
         run: yarn lint --ext js,jsx --report-unused-disable-directives
