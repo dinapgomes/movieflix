@@ -30,8 +30,16 @@ jobs:
           name: eslint-results
           path: .eslintcache
 
+      - name: instalação do jscpd
+        run: | 
+        cd movieflix
+        npm install -g jscpd
+      - name: execução do jscpd
+        run: | 
+        cd movieflix
+        npx jscpd --exitCode 1 .    
+
       - name: Run Prettier
         run: yarn prettier . --check
 
-      - name: Run JSCPD
-        run: jscpd src/ --min-tokens 100
+
