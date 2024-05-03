@@ -18,7 +18,8 @@ jobs:
           node-version: "16" # Atualizado para a versão 16 para garantir compatibilidade com o pacote `vite`
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          yarn install --frozen-lockfile --ignore-engines
 
       - name: Run ESLint
         run: yarn lint --ext js,jsx --report-unused-disable-directives
@@ -33,4 +34,4 @@ jobs:
         run: yarn prettier . --check
 
       - name: Run JSCPD
-        run: npx jscpd src/ --check
+        run: jscpd src/ --check
