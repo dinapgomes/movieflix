@@ -20,7 +20,14 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install --frozen-lockfile --ignore-engines
-
+      - name: instalação do jscpd
+        run: cd movieflix
+          yarn add -g jscpd
+        
+      - name: execução do jscpd
+        run: cd movieflix
+          npx jscpd --exitCode 1 .    
+        
       - name: Run ESLint
         run: yarn lint --ext js,jsx --report-unused-disable-directives
 
@@ -29,15 +36,6 @@ jobs:
         with:
           name: eslint-results
           path: .eslintcache
-
-      - name: instalação do jscpd
-        run: | 
-        cd movieflix
-        npm install -g jscpd
-      - name: execução do jscpd
-        run: | 
-        cd movieflix
-        npx jscpd --exitCode 1 .    
 
       - name: Run Prettier
         run: yarn prettier . --check
