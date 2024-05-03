@@ -1,11 +1,11 @@
-name: ESLint
+name: ESLint and JSCPD
 
 on:
   push:
   pull_request:
 
 jobs:
-  eslint:
+  eslint_and_jscpd:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "14" # Escolha a versão do Node.js adequada
 
       - name: Install dependencies
         run: yarn install
@@ -31,3 +31,6 @@ jobs:
 
       - name: Run Prettier
         run: yarn prettier . --check
+
+      - name: Run JSCPD
+        run: jscpd path/to/your/code
