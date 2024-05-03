@@ -21,12 +21,10 @@ jobs:
           yarn install --frozen-lockfile --ignore-engines
       - name: instalação do jscpd
         run: |
-          cd movieflix
           yarn global add jscpd
 
       - name: execução do jscpd
         run: |
-          cd movieflix
           npx jscpd --exitCode 1 .    
 
       - name: Run ESLint
