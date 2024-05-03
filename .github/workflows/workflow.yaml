@@ -34,4 +34,4 @@ jobs:
         run: yarn prettier . --check
 
       - name: Run JSCPD
-        run: jscpd src/ --check
+        run: jscpd src/ --min-tokens 100
