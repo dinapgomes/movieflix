@@ -15,6 +15,5 @@ module.exports = {
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     "react/prop-types": "off",
     "no-warning-comments": "off",
-    "react/no-dupe-keys": "warn" // Alterando para aviso (warn)
   },
 };
