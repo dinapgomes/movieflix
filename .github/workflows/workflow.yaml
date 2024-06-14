@@ -34,3 +34,6 @@ jobs:
 
       - name: Run Prettier
         run: yarn prettier . --check
+
+      - name: Run Circular Dependency Check
+        run: yarn check:circles
