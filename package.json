@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives",
     "preview": "vite preview",
-    "check:circles": "madge --circular src"
+    "check:circles": "madge --circular src",
+    "check:unused": "depcheck",
+    "check:duplicates": "madge --circular --extensions js,jsx src"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
@@ -27,11 +29,14 @@
     "@types/react": "^18.2.77",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.0",
-    "eslint": "^8.53.0",
-    "eslint-plugin-react": "^7.34.1",
+    "depcheck": "^1.4.7",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-no-only-tests": "^3.1.0",
+    "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "eslint-plugin-security": "^3.0.0",
+    "eslint-plugin-security": "^3.0.1",
     "madge": "^7.0.0",
     "prettier": "3.2.5",
     "react-error-overlay": "^6.0.9",
