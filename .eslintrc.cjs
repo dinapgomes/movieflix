@@ -20,6 +20,5 @@ module.exports = {
     "import/no-duplicates": "warn",
     "react/no-typos": "warn",
     "no-duplicate-case": "warn",
-    
   },
 };
